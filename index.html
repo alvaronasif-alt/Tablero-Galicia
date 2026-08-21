@@ -4314,15 +4314,4 @@ document.getElementById('lockSubmitBtn').onclick = tryPin;
 document.getElementById('lockPinInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter') tryPin(); });
 document.getElementById('lockPinInput').addEventListener('input', (e)=>{ e.target.value = e.target.value.replace(/\D/g,'').slice(0,4); });
 
-let alreadyUnlocked = false;
-try {
-  alreadyUnlocked = localStorage.getItem(PIN_STORAGE_KEY) === '1';
-} catch(e) {
-  // Si falla localStorage, asumimos que no está desbloqueado
-}
-
-if(alreadyUnlocked){
-  unlockDashboard();
-} else {
-  document.getElementById('lockPinInput').focus();
-}
+unlockDashboard();
